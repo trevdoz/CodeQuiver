@@ -1,0 +1,396 @@
+  body {
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 95px 240px 380px 1fr;
+    grid-template-areas:
+      'sidenav quivers snippets code';
+    height: 100vh;
+    position: relative;
+  }
+
+  .sidenav {
+    grid-area: sidenav;
+    background-color: #394263;
+    display: flex;
+    flex-direction: column;
+    padding: 3px 10px 12px;
+    position: relative;
+  }
+
+  .icon-code-quiver {
+    width: 100%;
+    height: 45px;
+  }
+
+  .sidenav ul {
+    padding: 0px;
+    margin: 30px 3px;
+    list-style-type: none;
+  }
+
+  .sidenav ul li {
+    margin-bottom: 25px;
+  }
+
+  .sidenav ul li a {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: .8em;
+    opacity: 0.75;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidenav ul li a:hover {
+    opacity: .95;
+  }
+
+  svg.icon {
+    fill: white;
+    width: inherit;
+    height: 45px;
+  }
+
+  .quivers {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px 12px;
+    grid-area: quivers;
+    background-color: #8fd4d9;
+    position: relative;
+    width: inherit;
+  }
+
+  .quivers-container {
+    margin-top: 15px;
+    position: relative;
+    width: inherit;
+  }
+
+  .quivers-container a {
+    text-decoration: none;
+    color: white;
+    padding: 6px 0 6px 10px;
+    margin: 3px -20px 0 0px;
+    line-height: 14px;
+    display: block;
+    position: relative;
+  }
+
+  .quivers a:hover {
+    transition: all .25s ease-out;
+    background-color: #394263;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .quivers-container a span:nth-child(2) {
+    position: absolute;
+    right: 23px;
+  }
+
+  .snippets {
+    grid-area: snippets;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: thin solid lightgrey;
+    width: 380px;
+  }
+
+  .quiver-header {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px -1px;
+    padding: 6px 20px;
+    z-index: 10;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .quiver-metadata {
+    float: left;
+    color: black;
+  }
+
+  .quiver-name {
+    font-weight: 800;
+  }
+
+  .snippet-total {
+    margin-top: 1px;
+    font-size: .75em;
+    color: #678;
+  }
+
+  .quiver-header i {
+    color: #678;
+    float: right;
+    opacity: .45;
+    margin-left: 10px;
+  }
+
+  .snippet-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+  }
+
+  .snippet-item:hover {
+    transition: all 0.2s ease-out 0s;
+    background-color: #eee;
+  }
+
+  .snippets a {
+    text-decoration: none;
+  }
+
+  .snippets a.selected {
+    background-color: #eee;
+  }
+
+  .snippet-item .snippet-name {
+    color: black;
+    font-weight: 400;
+    font-size: 15px;
+  }
+
+  .snippet-metadata {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #678;
+  }
+
+  .code {
+    grid-area: code;
+    background-color: white;
+    border: thin solid lightgrey;
+    padding: 20px;
+    overflow-y: auto;
+
+  }
+
+  .code .new-snippet-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 13px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #89a;
+    vertical-align: text-bottom;
+    text-transform: uppercase;
+  }
+
+  button.save {
+    float: right;
+    font-size: 12px;
+    background-color: #009aff;
+    line-height: 1;
+    border-width: 1px;
+    cursor: pointer;
+    color: #fff;
+    padding: 6px 12px;
+    position: relative;
+    top: -7px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border-color: #009aff;
+  }
+
+  .new-snippet-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quivers h4 {
+    margin: 0px 0px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.1em;
+    color: white;
+  }
+
+  .quivers h2 {
+    display: inline;
+    font-family: 'Roboto', sans-serif;
+    font-size: .9em;
+    color: white;
+    opacity: .85;
+  }
+
+  .quivers i {
+    float: right;
+    color: white;
+    opacity: .85;
+  }
+
+  input[type=text],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    resize: vertical
+  }
+
+  input[type=submit] {
+    font-size: 12px;
+    background-color: #009aff;
+    line-height: 1;
+    border-width: 1px;
+    cursor: pointer;
+    color: #fff;
+    padding: 6px 12px;
+    position: relative;
+    top: -7px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border-color: #009aff;
+    width: fit-content;
+    margin: 15px auto;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .snippets .tooltip .tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .quivers .tooltip .tooltiptext {
+    visibility: hidden;
+    width: fit-content;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .form-inline { 
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  /* Add some margins for each label */
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  /* Style the input fields */
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style the submit button */
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .form-inline button:hover {
+    background-color: royalblue;
+  }
